@@ -1,0 +1,59 @@
+# =========================
+# OS
+# =========================
+.DS_Store
+Thumbs.db
+
+# =========================
+# IDEs
+# =========================
+.idea/
+.vscode/
+
+# =========================
+# FRONTEND
+# =========================
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# logs
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# env
+frontend/.env
+frontend/.env.local
+
+# =========================
+# BACKEND
+# =========================
+backend/target/
+backend/.mvn/wrapper/maven-wrapper.jar
+
+# IntelliJ
+backend/*.iml
+
+# logs
+backend/logs/
+backend/*.log
+
+# env
+backend/.env
+
+# =========================
+# JAVA
+# =========================
+*.class
+
+# =========================
+# DOCKER
+# =========================
+postgres_data/
+
+# =========================
+# TEMP
+# =========================
+tmp/
+temp/

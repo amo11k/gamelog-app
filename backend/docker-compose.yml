@@ -1,0 +1,36 @@
+version: "3.8"
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: gamelog
+      POSTGRES_USER: gamelog
+      POSTGRES_PASSWORD: gamelog
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U gamelog"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      DB_URL: jdbc:postgresql://db:5432/gamelog
+      DB_USERNAME: gamelog
+      DB_PASSWORD: gamelog
+      JWT_SECRET: 4a6f686e446f6553656372657456657279566572795365637265744b6579466f7247616d654c6f67417070
+      JWT_EXPIRATION_MS: 86400000
+      RAWG_API_KEY: ${RAWG_API_KEY:-}
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
